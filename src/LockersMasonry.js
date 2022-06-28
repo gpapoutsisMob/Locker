@@ -1,20 +1,15 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
 import Masonry from "@mui/lab/Masonry";
-import FreeScrollBar from 'react-free-scrollbar';
-import "./styles.css";
-
-
-import Modal from '@mui/material/Modal';
-import Button from '@mui/material/Button';
+import LockerItem from "./LockerItem";
 
 const style = {
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
   width: 400,
-  bgcolor: 'background.paper',
-  border: '2px solid #000',
+  bgcolor: "background.paper",
+  border: "2px solid #000",
   boxShadow: 24,
 
   pt: 2,
@@ -22,67 +17,30 @@ const style = {
   pb: 3,
 };
 
-
-// export default function NestedModal() {
-//   const [open, setOpen] = React.useState(false);
-//   const handleOpen = () => {
-//     setOpen(true);
-//   };
-//   const handleClose = () => {
-//     setOpen(false);
-//   };
-
-//   return (
-//     <div>
-//       <Button onClick={handleOpen}>Open modal</Button>
-//       <Modal
-//         open={open}
-//         onClose={handleClose}
-//         aria-labelledby="parent-modal-title"
-//         aria-describedby="parent-modal-description"
-//       >
-//         <Box sx={{ ...style, width: 400 }}>
-//           <h2 id="parent-modal-title">Text in a modal</h2>
-//           <p id="parent-modal-description">
-//             Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-//           </p>
-//           <ChildModal />
-//         </Box>
-//       </Modal>
-//     </div>
-//   );
-// }
-
-
-
-
-
 const data = [
-  { height: 170, title: "Locker", status: "pending"},
+  { height: 170, title: "Locker", status: "pending" },
   { height: 170, title: "Locker", status: "open" },
   { height: 170, title: "Locker", status: "pending" },
-  
+
   { height: 170, title: "Locker", status: "open" },
   { height: 35, title: "Locker", status: "pending" },
   { height: 170, title: "Locker", status: "open" },
-  
+
   { height: 35, title: "Locker", status: "open" },
-  
+
   { height: 213, title: "PC", status: "pc" },
-  
+
   { height: 35, title: "Locker", status: "pending" },
   { height: 35, title: "Locker", status: "pending" },
-  
+
   { height: 35, title: "Locker", status: "pending" },
   { height: 35, title: "Locker", status: "pending" },
-  
+
   { height: 35, title: "Locker", status: "pending" },
   { height: 35, title: "Locker", status: "pending" },
-  
-  
+
   { height: 80, title: "Locker", status: "pending" },
 
-  
   { height: 35, title: "Locker", status: "closed" },
   { height: 80, title: "Locker", status: "pending" },
   { height: 35, title: "Locker", status: "pending" },
@@ -92,62 +50,9 @@ const data = [
   { height: 80, title: "Locker", status: "pending" },
   { height: 80, title: "Locker", status: "pending" },
   { height: 80, title: "Locker", status: "pending" },
-  
 ];
 
-const MyItem = ({ height, title, index, status }) => {
-
-    // const [open, setOpen] = React.useState(false);
-    const handleOpen = () => {
-        console.log("Sfgsdfgsdfgsdfgsdfgs")
-      };
-
-    // <Modal
-    //   open={open}
-    //   //onClose={handleClose}
-    //   aria-labelledby="parent-modal-title"
-    //   aria-describedby="parent-modal-description"
-    // >
-    //   <Box sx={{ ...style, width: 400 }}>
-    //     <h2 id="parent-modal-title">Text in a modal</h2>
-    //     <p id="parent-modal-description">
-    //       Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-    //     </p>
-    //   </Box>
-    // </Modal>
-
-  const defineColor = (status) => {
-    if(index === 7)
-        return "transparent"
-    else{
-        if(status === "pending")
-            return "red"
-        else if(status === "open")
-            return "grey"
-        else if (status === "closed")
-            return "yellow"
-    }
-  };
-  return (
-    <div
-      className="item-container"
-      onClick={handleOpen}
-      style={{
-        height: height,
-        width:190,
-        backgroundColor: defineColor(status),
-        alignContent: "center",
-    }}>
-        <div style={{textAlign: "center"}}>
-            {title} {index}
-        </div>
-    </div>
-  );
-};
-
-export default function BasicMasonry() {
-
-
+export default function LockersMasonry() {
   var res = null;
 
   // const theme = createMuiTheme({
@@ -169,14 +74,10 @@ export default function BasicMasonry() {
   //   }
   // });
 
-
-
-
-
   function getAllClients() {
     console.log("dfvdfvdsfdvsdfv");
     console.log(React.version);
-  
+
     const myHeaders = new Headers({
       "Content-Type": "text/plain",
       // Authorization:
@@ -185,7 +86,7 @@ export default function BasicMasonry() {
 
     return fetch("https://localhost:7008/LockersParcels", {
       method: "GET",
-      headers: myHeaders
+      headers: myHeaders,
     })
       .then((response) => {
         if (response.status === 200) {
@@ -209,31 +110,19 @@ export default function BasicMasonry() {
 
   return (
     <>
-        <style>{'body { background-color: #cfd8dc; }'}</style>
-      <Box 
-          sx={{ width:600, alignContent: 'center' }} 
-    >
-      {/* <ThemeProvider theme={theme}> */}
-
-    <Masonry columns={3} spacing={1}>
-        {data.map((item, index) => (
-          <MyItem
-            key={index}
-            height={item.height}
-            title={item.title}
-            index={index}
-            status={item.status}
-          />
-        ))}
-    </Masonry>
-
-
-    {/* </ThemeProvider> */}
-
-
-    </Box>
-
+      <Box sx={{ width: 600, alignContent: "center" }}>
+        <Masonry columns={3} spacing={1}>
+          {data.map((item, index) => (
+            <LockerItem
+              key={index}
+              height={item.height}
+              title={item.title}
+              index={index}
+              status={item.status}
+            />
+          ))}
+        </Masonry>
+      </Box>
     </>
   );
 }
-

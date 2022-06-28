@@ -1,23 +1,25 @@
+body {
+  background-color: #cfd8dc;
+}
 .item-container {
-    background-color: red;
-    border-radius: 5px;
-    padding: 0.5rem;
-    color: white;
-    font-size: 0.8rem;
+  background-color: red;
+  border-radius: 5px;
+  padding: 0.5rem;
+  color: white;
+  font-size: 0.8rem;
 }
 
 .align-center {
-
-    position: 'absolute';
-    left: '50%';
-    top: '50%';
-    transform: 'translate(-50%, -50%)';
+  position: "absolute";
+  left: "50%";
+  top: "50%";
+  transform: "translate(-50%, -50%)";
 }
 
 .vertical-center {
-    margin: 0;
-    position: absolute;
-    top: 50%;
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
-  }
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
