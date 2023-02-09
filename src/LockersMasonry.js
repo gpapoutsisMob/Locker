@@ -66,7 +66,7 @@ export default function LockersMasonry() {
             lockers?.map((item, index) => (
             <LockerItem
               key={parseInt(item.parcelNumber)}
-              height={(item.height === 37.0000000000 ) ? 170 : (item.height === 18.0000000000 ) ? 80 : 35}
+              height={(item.height === 37.0000000000 ) ? 170 : (item.height === 18.0000000000 ) ? 80 : (item.height === 40.2500000000 ) ? 213 : 35}
               title={item.parcelNumber.toString}
               parcelId={item.parcelId}   
               parcelNumber={item.parcelNumber}  
