@@ -1,10 +1,22 @@
 import React from "react";
 import LockerDialog from "./Dialog";
 
-const emails = ["username@gmail.com", "user02@gmail.com"];
-
 export default function LockerItem(props) {
-  const { height, title, index, status } = props;
+  const { 
+      taskGid,
+      customerCode,
+      customerBranchCode,
+      lockerId,
+      parcelId,
+      parcelNumber,
+      lockerSize,
+      lockerUid,
+      depth,
+      width,
+      height,
+      lockerStatus,
+      lockerState
+   } = props;
   const [open, setOpen] = React.useState(false);
   const [selectedValue, setSelectedValue] = React.useState({});
 
@@ -18,12 +30,12 @@ export default function LockerItem(props) {
     setSelectedValue(value);
   };
 
-  const defineColor = (status) => {
-    if (index === 7) return "transparent";
+  const defineColor = (lockerState) => {
+    if (lockerState === 7) return "transparent";
     else {
-      if (status === "pending") return "red";
-      else if (status === "open") return "grey";
-      else if (status === "closed") return "yellow";
+      if (lockerState === "Γεμάτο") return "#ff5252";
+      else if (lockerState === "Άδειο") return "#66bb6a";
+      else if (lockerState === "Δεσμευμένο") return "#c0ca33";
     }
   };
   return (
@@ -34,12 +46,12 @@ export default function LockerItem(props) {
         style={{
           height: height,
           width: 190,
-          backgroundColor: defineColor(status),
+          backgroundColor: defineColor(lockerState),
           alignContent: "center",
         }}
       >
         <div style={{ textAlign: "center" }}>
-          {title} {index}
+          {parcelId} {parcelNumber}
         </div>
       </div>
       <LockerDialog

@@ -90,12 +90,14 @@ export default function App() {
             aria-label="open drawer"
             onClick={handleDrawerOpen}
             edge="start"
-            sx={{ mr: 2, ...(open && { display: "none" }) }}
-          >
+            sx={{ mr: 2, ...(open && { display: "none" }) }}>
             <MenuIcon />
           </IconButton>
+          <img 
+            src={require('./images/logomt.jpg')} alt = "mt"
+            style={{ height: 40, marginLeft: 20, marginRight: 20, }}/>
           <Typography variant="h6" noWrap component="div">
-            Locker page
+            Mobile Technology Lockers
           </Typography>
         </Toolbar>
       </AppBar>
